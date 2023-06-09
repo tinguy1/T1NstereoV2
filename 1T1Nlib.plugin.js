@@ -34,7 +34,7 @@ module.exports = (() => {
           github_username: "tinguy1",
         },
       ],
-      version: "1.1.3",
+      version: "1.0.0",
       description: "Required lib for T1NstereoV2",
       github: "https://github.com/tinguy1/T1NstereoV2/edit/main/1T1Nlib.plugin.js",
       github_raw:
