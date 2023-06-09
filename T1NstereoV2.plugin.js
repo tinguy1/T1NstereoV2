@@ -111,8 +111,8 @@ module.exports = (() => {
         items: [
           'fixed auto rejoin',
           'fixed auto rejoin again ugh, sorry for the plugin update prompts',
-          'fixed auto rejoin againnnnnnnnnnnnnnnnnnn'
-          'fixed auto rejoin againnnnnnnnnnnnnnfgsdfgsdfgsnnnnn'
+          'fixed auto rejoin againnnnnnnnnnnnnnnnnnn',
+          'fixed auto rejoin againnnnnnnnnnnnnnfgsdfgsdfgsnnnnn',
         ],
       },
     ],
