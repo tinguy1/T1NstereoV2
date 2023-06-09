@@ -39,7 +39,7 @@ module.exports = (() => {
       description: "Required lib for T1NstereoV2",
       github: "https://github.com/tinguy1/T1NstereoV2/edit/main/1T1Nlib.plugin.js",
       github_raw:
-        "",
+        "https://raw.githubusercontent.com/tinguy1/T1NstereoV2/main/1T1Nlib.plugin.js",
     },
     changelog: [
       {
