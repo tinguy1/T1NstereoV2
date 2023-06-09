@@ -1014,11 +1014,14 @@ module.exports = (() => {
                       voicee = null
                       this.settings.miscsettings2.autorejoin = !this.settings.miscsettings2.autorejoin
                       if (this.settings.miscsettings2.autorejoin === true) {
+                        autoreconnectrunning = false
                         this.acreconnect3();
                         if (this.settings.miscsettings5.enableToasts) {
-                          BdApi.showToast('Auto reconnect on', { type: 'info' })
+                          BdApi.showToast('Auto reconnect on', { type: 'info' })                          
                         }
-                        autoreconnectrunning = true
+                        setTimeout(() => {
+                          autoreconnectrunning = true
+                        }, 1499)
                       } else {
                          autoreconnectrunning = false
                         if (this.settings.miscsettings5.enableToasts) {
