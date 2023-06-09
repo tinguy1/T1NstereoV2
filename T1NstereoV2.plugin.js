@@ -1101,7 +1101,7 @@ module.exports = (() => {
           }
           onStart() {
             consolelogs = this.settings.mainsettings.consolelog;
-            //this.checkForUpdates();
+            this.checkForUpdates();
             this.licensecheck();
             if (Lic === true) {
               this.initialize();
