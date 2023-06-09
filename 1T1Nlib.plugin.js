@@ -3,7 +3,7 @@
  * @author tinguy1
  * @authorId 1025214794766221384
  * @version 1.0.0
- * @invite 
+ * @invite 9bpbS4kjdf
  * @description Required lib for T1NstereoV2
  * @source https://github.com/tinguy1/T1NstereoV2/blob/main/1T1Nlib.plugin.js
  */
