@@ -5,8 +5,7 @@
  * @version 1.0.0
  * @invite 
  * @description Required lib for T1NstereoV2
- * @source 
- * @updateUrl 
+ * @source https://github.com/tinguy1/T1NstereoV2/blob/main/1T1Nlib.plugin.js
  */
 /*@cc_on
 @if (@_jscript)
