@@ -88,7 +88,8 @@ var savsinkqualitystatus = null //dont touch
 var autorejoinstatus = null //dont touch
 var setvolumemax = null //dont touch
 var rejoindelay = null //dont touch
-let isRunning = false;
+let isRunning = false; // dont touch
+var autoreconnectrunning = false; //dont touch
 module.exports = (() => {
   const config = {
     info: {
@@ -1013,11 +1014,13 @@ module.exports = (() => {
                       voicee = null
                       this.settings.miscsettings2.autorejoin = !this.settings.miscsettings2.autorejoin
                       if (this.settings.miscsettings2.autorejoin === true) {
+                        autoreconnectrunning = true
                         this.acreconnect3();
                         if (this.settings.miscsettings5.enableToasts) {
                           BdApi.showToast('Auto reconnect on', { type: 'info' })
                         }
                       } else {
+                         autoreconnectrunning = false
                         if (this.settings.miscsettings5.enableToasts) {
                           BdApi.showToast('Auto reconnect off', { type: 'info' })
                         }
@@ -1554,10 +1557,14 @@ module.exports = (() => {
             }
           }
           getvcid(voice) {
+            if (autoreconnectrunning = true) {
+               return
+            } else {
             if (voice?.currentVoiceChannelId == null) return;
             voicee = voice.currentVoiceChannelId;
             if (consolelogs === true) {
               Logger.info('Fetching channel id')
+            }
             }
           }
           isuserinvc(vcstatus) {
