@@ -14,10 +14,10 @@ $$$$$$$$\   $$\   $$\   $$\        $$$$$$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$$$$$$
 
  * @name T1NstereoV2
  * @author tinguy1
- * @version 1.0.7
+ * @version 1.0.0
  * @authorLink https://github.com/tinguy1
  * @invite 9bpbS4kjdf
- * @source https://github.com/tinguy1/T1Nstereo
+ * @source https://github.com/tinguy1/T1NstereoV2
 **/
 /*@cc_on @if (@_jscript)
 var pluginName = WScript.ScriptName.split(".")[0];
@@ -103,7 +103,7 @@ module.exports = (() => {
       ],
       authorlink: 'github.com/tinguy1',
       github: 'github.com/tinguy1',
-      github_raw: ''
+      github_raw: 'https://raw.githubusercontent.com/tinguy1/T1NstereoV2/main/T1NstereoV2.plugin.js'
     },
     changelog: [
       {
