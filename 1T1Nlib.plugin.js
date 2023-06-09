@@ -32,13 +32,12 @@ module.exports = (() => {
       authors: [
         {
           name: "tinguy1",
-          discord_id: "",
           github_username: "tinguy1",
         },
       ],
       version: "1.1.3",
       description: "Required lib for T1NstereoV2",
-      github: "",
+      github: "https://github.com/tinguy1/T1NstereoV2/edit/main/1T1Nlib.plugin.js",
       github_raw:
         "",
     },
