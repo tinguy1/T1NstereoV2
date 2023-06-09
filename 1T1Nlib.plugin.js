@@ -1,7 +1,6 @@
 /**
  * @name T1Nlib
  * @author tinguy1
- * @authorId 1025214794766221384
  * @version 1.0.0
  * @invite 9bpbS4kjdf
  * @description Required lib for T1NstereoV2
