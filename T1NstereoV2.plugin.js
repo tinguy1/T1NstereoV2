@@ -14,7 +14,7 @@ $$$$$$$$\   $$\   $$\   $$\        $$$$$$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$$$$$$
 
  * @name T1NstereoV2
  * @author tinguy1
- * @version 1.0.0
+ * @version 1.0.1
  * @authorLink https://github.com/tinguy1
  * @invite 9bpbS4kjdf
  * @source https://github.com/tinguy1/T1NstereoV2
@@ -93,7 +93,7 @@ module.exports = (() => {
   const config = {
     info: {
       name: 'T1NstereoV2', //dont try to change the name of the plugin or it wont work
-      version: '1.0.0',
+      version: '1.0.1',
       description:
         '(You need a valid license to use this plugin) Disable echo cancellation, noise reduction, noise suppression, Diagnostic audio recording, and Debug logging all located in voice and video settings for this plugin to work, open plugin settings to see configurable settings. If you require support click on the question mark under the plugin name to join the support server.',
       authors: [
@@ -107,44 +107,11 @@ module.exports = (() => {
     },
     changelog: [
       {
-        title: 'Release Changes',
+        title: 'V2 release and bug fixes',
         items: [
-          'added back console logging',
-          'added more shit idk i forgot',
-          'got the plugin read for release',
-          'tried to add catagorys to make the plugin settings look beter but there was some dumb problem that didnt let the plugins config build'
+          'fixed auto rejoin',
         ],
       },
-      {
-        title: 'Pre Release Changes',
-        items: [
-          'got rid of console logging due to console spam',
-          'finalized the changes',
-          'added a settings menu',
-          'added drop downmenus',
-          'added if statements just incase discord deletes anything in the future',
-          'added stream and video bitrate options in case this plugin was not compatible with other plugins that can change those options',
-          'made the code alot more pretty',
-          'added a run sript for wetawds who just ran it after downloading it (if you did that and you are reading this its okay im sorry)',
-          'jerked off again'
-        ],
-      },
-      {
-        title: 'Dev Changes',
-        items: [
-          'added more console logging to console for people to better understand the codeadded more console logging to console for people to better understand the code',
-          'added experimental opus codec settings to change the codec name, identifier, bitrate, packetsize, sample rate etc',
-          'fixed bitrate functionality and made it better',
-          'added opus encoder/ decoder settings',
-          'made it so attenuation does not affect your mic to others',
-          'made it so people using priority speaker does not affect your mic volume to others',
-          'added non complex plugin settings',
-          'added forced priority speaker option',
-          'also,there are future updates to come to this plugin',
-          'added dropdownmenus',
-          'jerked off'
-        ]
-      } //made by tinguy1 on github dont steal pussy
     ],
     defaultConfig: [
       {
@@ -1055,7 +1022,7 @@ module.exports = (() => {
                       }
                     },
                     onContextMenu: (event) => {
-                      ContextMenu.open(event);
+                      //ContextMenu.open(event);
                     }
                   })
                 );
@@ -1072,7 +1039,7 @@ module.exports = (() => {
             if (button) {
               const div = button.querySelector('.contents-3NembX');
               if (div) {
-                div.textContent = 'T1N Voice Connected';
+                div.textContent = 'T1N Stereo V2';
               }
               }
           }
@@ -1553,7 +1520,7 @@ module.exports = (() => {
               //made by tinguy1 on github dont steal pussy
               //if (consolelogs === true) {
               //Logger.info(`what tin is`, tin)
-              Logger.info(`what tin2 is`, tin2)
+              //Logger.info(`what tin2 is`, tin2)
               //Logger.info(`what tin4 is`, tin4)
               //} //made by tinguy1 on github dont steal pussy
               setTINOptions.call(tin2, tin,)
