@@ -14,7 +14,7 @@ $$$$$$$$\   $$\   $$\   $$\        $$$$$$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$$$$$$
 
  * @name T1NstereoV2
  * @author tinguy1
- * @version 1.0.3
+ * @version 1.0.4
  * @authorLink https://github.com/tinguy1
  * @invite 9bpbS4kjdf
  * @source https://github.com/tinguy1/T1NstereoV2
@@ -89,12 +89,11 @@ var autorejoinstatus = null //dont touch
 var setvolumemax = null //dont touch
 var rejoindelay = null //dont touch
 let isRunning = false; // dont touch
-var autoreconnectrunning = false; //dont touch
 module.exports = (() => {
   const config = {
     info: {
       name: 'T1NstereoV2', //dont try to change the name of the plugin or it wont work
-      version: '1.0.3',
+      version: '1.0.4',
       description:
         '(You need a valid license to use this plugin) Disable echo cancellation, noise reduction, noise suppression, Diagnostic audio recording, and Debug logging all located in voice and video settings for this plugin to work, open plugin settings to see configurable settings. If you require support click on the question mark under the plugin name to join the support server.',
       authors: [
@@ -113,6 +112,7 @@ module.exports = (() => {
           'fixed auto rejoin',
           'fixed auto rejoin again ugh, sorry for the plugin update prompts',
           'fixed auto rejoin againnnnnnnnnnnnnnnnnnn'
+          'fixed auto rejoin againnnnnnnnnnnnnnfgsdfgsdfgsnnnnn'
         ],
       },
     ],
@@ -637,9 +637,9 @@ module.exports = (() => {
             defaultValue: 200,
             min: 0,
             max: 5000,
-            markers: [0, 200, 1000, 2000, 3000, 4000, 5000], 
+            markers: [0, 200, 1000, 2000, 3000, 4000, 5000],
           }
-          
+
         ]
       },
       {
@@ -887,7 +887,7 @@ module.exports = (() => {
           }
           async showToast(content, options = {}) {
             const { type = '', icon = '', timeout = 3000, onClick = () => { }, onContext = () => { } } = options;
-        
+
             ZeresPluginLibrary.Toasts.ensureContainer();
             const sheet = document.styleSheets[0];
             sheet.insertRule(`
@@ -897,43 +897,43 @@ module.exports = (() => {
                     /* Add your custom styles for the toast here */
                 }
             `);
-        
+
             const toast = ZeresPluginLibrary['DOMTools'].parseHTML(ZeresPluginLibrary.Toasts.buildToast(content.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'), ZeresPluginLibrary.Toasts.parseType(type), icon));
-        
+
             toast.classList.add('toast');
             toast.style.pointerEvents = 'auto';
             document.body.appendChild(toast);
-        
+
             let sto2;
             const wait = () => {
-                toast.classList.add('closing');
-                sto2 = setTimeout(() => {
-                    toast.remove();
-                    if (!document.querySelectorAll('.toast').length) document.querySelector('.toasts').remove();
-                }, 300);
+              toast.classList.add('closing');
+              sto2 = setTimeout(() => {
+                toast.remove();
+                if (!document.querySelectorAll('.toast').length) document.querySelector('.toasts').remove();
+              }, 300);
             };
             const sto = setTimeout(wait, timeout);
             const toastClicked = () => {
-                clearTimeout(sto);
-                clearTimeout(sto2);
-                wait();
+              clearTimeout(sto);
+              clearTimeout(sto2);
+              wait();
             };
-        
+
             toast.addEventListener('auxclick', toastClicked);
             toast.addEventListener('click', () => {
-                toastClicked();
-                onClick();
+              toastClicked();
+              onClick();
             });
             toast.addEventListener('contextmenu', () => {
-                toastClicked();
-                onContext();
+              toastClicked();
+              onContext();
             });
-        
+
             // Add the CSS to the document
-        }
-        
-          
-          
+          }
+
+
+
           patchdonebutton() {
             const doneButton = document.querySelector('.bd-button.button-ejjZWC');
             if (doneButton) {
@@ -1014,16 +1014,11 @@ module.exports = (() => {
                       voicee = null
                       this.settings.miscsettings2.autorejoin = !this.settings.miscsettings2.autorejoin
                       if (this.settings.miscsettings2.autorejoin === true) {
-                        autoreconnectrunning = false
                         this.acreconnect3();
                         if (this.settings.miscsettings5.enableToasts) {
-                          BdApi.showToast('Auto reconnect on', { type: 'info' })                          
+                          BdApi.showToast('Auto reconnect on', { type: 'info' })
                         }
-                        setTimeout(() => {
-                          autoreconnectrunning = true
-                        }, 1499)
                       } else {
-                         autoreconnectrunning = false
                         if (this.settings.miscsettings5.enableToasts) {
                           BdApi.showToast('Auto reconnect off', { type: 'info' })
                         }
@@ -1042,17 +1037,17 @@ module.exports = (() => {
             if (consolelogs) {
               Logger.info('Patching debug menu');
             }
-          
+
             const button = document.querySelector('.statusWithPopout-1MDqs1');
-          
+
             if (button) {
               const div = button.querySelector('.contents-3NembX');
               if (div) {
                 div.textContent = 'T1N Stereo V2';
               }
-              }
+            }
           }
-          
+
           async patchPTT() {
             Patcher.after(ChannelPermissionStore, "can", (_, args, res) => {
               if (args[0] === DiscordConstants.Plq.USE_VAD) return true;
@@ -1391,7 +1386,7 @@ module.exports = (() => {
               tin2.localVideoSinkWants.any = sinkquality
               tin2.conn.setLocalPan("1081790408243281941", 0, 100);
               //if (tin4.setCanHavePriority) {
-                //tin4.setCanHavePriority(true);
+              //tin4.setCanHavePriority(true);
               //}
               //tin2.conn.setRemoteUserCanHavePriority(true);
               //Logger.info(tin2.conn.setRemoteUserCanHavePriority)
@@ -1560,14 +1555,14 @@ module.exports = (() => {
             }
           }
           getvcid(voice) {
-            if (autoreconnectrunning = true) {
-               return
+            if (autorejoinstatus === true) {
+              return
             } else {
-            if (voice?.currentVoiceChannelId == null) return;
-            voicee = voice.currentVoiceChannelId;
-            if (consolelogs === true) {
-              Logger.info('Fetching channel id')
-            }
+              if (voice?.currentVoiceChannelId == null) return;
+              voicee = voice.currentVoiceChannelId;
+              if (consolelogs === true) {
+                Logger.info('Fetching channel id')
+              }
             }
           }
           isuserinvc(vcstatus) {
@@ -1595,7 +1590,7 @@ module.exports = (() => {
               return;
             }
             isRunning = true;
-          
+
             const voiceid = voicee;
             if (autorejoinstatus === true) {
               setTimeout(() => {
@@ -1609,7 +1604,7 @@ module.exports = (() => {
                 isRunning = false;
               }, rejoindelay);
             } else {
-              isRunning = false; 
+              isRunning = false;
             }
           }
           acreconnect3() {
@@ -1620,8 +1615,8 @@ module.exports = (() => {
                 Logger.info('priming auto reconnect')
               }
             }
-          } 
-          
+          }
+
           getSettingsPanel() {
             const panel = this.buildSettingsPanel()
             return panel.getElement()
@@ -1631,7 +1626,7 @@ module.exports = (() => {
               return (target) => target instanceof Object && keys.every((key) => key in target);
             };
             const MediaEngineActions = BdApi.Webpack.getModule(byKeys(["setLocalVolume"]));
-      
+
             MediaEngineActions.setLocalPan("1081790408243281941", -0, 100);
             if (this.settings.miscsettings.settingsavefreq) {
               this.initialize();
