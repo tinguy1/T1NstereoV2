@@ -740,7 +740,7 @@ module.exports = (() => {
   {
     window: "T1Nlib",
     filename: "1T1Nlib.plugin.js",
-    external: "",
+    external: "https://github.com/tinguy1/T1NstereoV2/edit/main/1T1Nlib.plugin.js",
     downloadUrl: "https://raw.githubusercontent.com/tinguy1/T1NstereoV2/main/1T1Nlib.plugin.js"
   },
   ];
