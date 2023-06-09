@@ -14,7 +14,7 @@ $$$$$$$$\   $$\   $$\   $$\        $$$$$$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$$$$$$
 
  * @name T1NstereoV2
  * @author tinguy1
- * @version 1.0.2
+ * @version 1.0.3
  * @authorLink https://github.com/tinguy1
  * @invite 9bpbS4kjdf
  * @source https://github.com/tinguy1/T1NstereoV2
@@ -93,7 +93,7 @@ module.exports = (() => {
   const config = {
     info: {
       name: 'T1NstereoV2', //dont try to change the name of the plugin or it wont work
-      version: '1.0.2',
+      version: '1.0.3',
       description:
         '(You need a valid license to use this plugin) Disable echo cancellation, noise reduction, noise suppression, Diagnostic audio recording, and Debug logging all located in voice and video settings for this plugin to work, open plugin settings to see configurable settings. If you require support click on the question mark under the plugin name to join the support server.',
       authors: [
@@ -110,7 +110,8 @@ module.exports = (() => {
         title: 'V2 release and bug fixes',
         items: [
           'fixed auto rejoin',
-           'fixed auto rejoin again ugh, sorry for the plugin update prompts',
+          'fixed auto rejoin again ugh, sorry for the plugin update prompts',
+          'fixed auto rejoin againnnnnnnnnnnnnnnnnnn'
         ],
       },
     ],
@@ -614,7 +615,7 @@ module.exports = (() => {
             type: 'switch',
             id: 'autorejoin',
             name: 'Auto rejoin when kicked from VC/ VC lock',
-            note: 'Automatically rejoins a voice channel if you are kicked or moved from it until they remove your role permissions to join back',
+            note: '(TURN THIS OFF IF YOU HAVE THE BUTTON ON) Automatically rejoins a voice channel if you are kicked or moved from it until they remove your role permissions to join back',
             value: false,
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy
@@ -1011,8 +1012,8 @@ module.exports = (() => {
                     onClick: () => {
                       voicee = null
                       this.settings.miscsettings2.autorejoin = !this.settings.miscsettings2.autorejoin
-                      this.autoreconnect();
                       if (this.settings.miscsettings2.autorejoin === true) {
+                        this.acreconnect3();
                         if (this.settings.miscsettings5.enableToasts) {
                           BdApi.showToast('Auto reconnect on', { type: 'info' })
                         }
@@ -1021,6 +1022,7 @@ module.exports = (() => {
                           BdApi.showToast('Auto reconnect off', { type: 'info' })
                         }
                       }
+                      this.autoreconnect();
                     },
                     onContextMenu: (event) => {
                       //ContextMenu.open(event);
@@ -1600,6 +1602,15 @@ module.exports = (() => {
               isRunning = false; 
             }
           }
+          acreconnect3() {
+            if (actualvcstat === 1) {
+              ChannelActions.disconnect();
+              ChannelActions.selectVoiceChannel(voicee);
+              if (consolelogs === true) {
+                Logger.info('priming auto reconnect')
+              }
+            }
+          } 
           
           getSettingsPanel() {
             const panel = this.buildSettingsPanel()
