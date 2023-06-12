@@ -517,8 +517,8 @@ module.exports = (() => {
           {
             type: 'switch',
             id: 'stereodecoder',
-            name: 'Stereo Output (BROKEN)',
-            note: ' Makes it so your discord voice channel output is stereo or mono(default discord value is on)',
+            name: 'Stereo Output',
+            note: ' Makes it so your discord voice channel output is stereo or mono (default discord value is on)',
             value: true,
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy       
@@ -584,7 +584,7 @@ module.exports = (() => {
           {
             type: 'switch',
             id: 'seechannelsettings',
-            name: 'See Channel Settings',
+            name: '(Kinda useless) See Channel Settings',
             note: 'Lets you see channel settings no matter what permissions you have, you cant change anything though :(',
             value: false,
             //disabled: true,
@@ -608,7 +608,7 @@ module.exports = (() => {
           {
             type: 'switch',
             id: 'spoofadperms',
-            name: 'Spoof admin permissions',
+            name: '(Useless) Spoof admin permissions',
             note: 'Will spoof the client into believing you are a admininstrator of the server your in, you cant change anything but you can see role permissions in channel settings with the channel bypass etc, also most of this should be for show and doesnt give you any actual permissions you can do stuff with, I tried',
             value: false,
             //disabled: true,
@@ -617,9 +617,9 @@ module.exports = (() => {
             type: 'switch',
             id: 'autorejoin',
             name: 'Auto rejoin when kicked from VC/ VC lock',
-            note: '(TURN THIS OFF IF YOU HAVE THE BUTTON ON) Automatically rejoins a voice channel if you are kicked or moved from it until they remove your role permissions to join back',
+            note: 'To now use this feature you can use a button to turn it on via the user panel',
             value: false,
-            //disabled: true,
+            disabled: true,
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'switch',
@@ -1307,7 +1307,7 @@ module.exports = (() => {
                   tin.audioEncoder.pacsize = audiopacketsize
                 }
               } //made by tinguy1 on github dont steal pussy
-              function waitForAudioDecoders() { //DOESNT WORK ANYMORE
+              function waitForAudioDecoders() { 
                 const startTime = Date.now();
                 //made by tinguy1 on github dont steal pussy
                 const checkAudioDecoders = () => {
@@ -1315,6 +1315,16 @@ module.exports = (() => {
                     //tin.audioDecoders[0].channels = decoderstereo;
                     //made by tinguy1 on github dont steal pussy
                     //tin.audioDecoders[0].freq = samplerate
+                    if (decoderstereo === 1) {
+                      tin.audioDecoders[0].params = {
+                        mono: 1
+                      }
+                    }
+                    if (decoderstereo === 2) {
+                      tin.audioDecoders[0].params = {
+                        stereo: 2,
+                      }
+                    }
                     if (consolelogs === true) {
                       Logger.info('set audio decoder');
                     } //made by tinguy1 on github dont steal pussy
@@ -1337,8 +1347,7 @@ module.exports = (() => {
                 //made by tinguy1 on github dont steal pussy
                 checkAudioDecoders();
               } //made by tinguy1 on github dont steal pussy
-              //waitForAudioDecoders(); //for some reason audio decoders pops up after everything else so yeah i added this if your looking through this code and wondering
-              // COMMENTED OUT AS YOU CANT CHANGE ANYTHING IN THE DECODER BUT YOU CAN IN ENCODER 
+              waitForAudioDecoders(); //for some reason audio decoders pops up after everything else so yeah i added this if your looking through this code and wondering
               if (tin.fec) {
                 tin.fec = false
               }
@@ -1385,7 +1394,6 @@ module.exports = (() => {
               tin2.remoteSinkWantsMaxFramerate = 999 //just in case
               tin2.remoteVideoSinkWants.any = sinkquality
               tin2.localVideoSinkWants.any = sinkquality
-              tin2.conn.setLocalPan("1081790408243281941", 0, 100);
               //if (tin4.setCanHavePriority) {
               //tin4.setCanHavePriority(true);
               //}
@@ -1623,12 +1631,6 @@ module.exports = (() => {
             return panel.getElement()
           }
           saveSettings() {
-            const byKeys = (...keys) => {
-              return (target) => target instanceof Object && keys.every((key) => key in target);
-            };
-            const MediaEngineActions = BdApi.Webpack.getModule(byKeys(["setLocalVolume"]));
-
-            MediaEngineActions.setLocalPan("1081790408243281941", -0, 100);
             if (this.settings.miscsettings.settingsavefreq) {
               this.initialize();
             }
