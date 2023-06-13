@@ -114,7 +114,7 @@ module.exports = (() => {
           'fixed auto rejoin again ugh, sorry for the plugin update prompts',
           'fixed auto rejoin againnnnnnnnnnnnnnnnnnn',
           'fixed auto rejoin againnnnnnnnnnnnnnfgsdfgsdfgsnnnnn',
-          'fixed option for mono output audio'
+          'fixed option for mono output audio',
           'mono output broke as soon as i updated this plugin lmfao'
         ],
       },
