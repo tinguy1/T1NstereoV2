@@ -14,7 +14,7 @@ $$$$$$$$\   $$\   $$\   $$\        $$$$$$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$$$$$$
 
  * @name T1NstereoV2
  * @author tinguy1
- * @version 1.0.9
+ * @version 1.0.10
  * @authorLink https://github.com/tinguy1
  * @invite 9bpbS4kjdf
  * @source https://github.com/tinguy1/T1NstereoV2
@@ -93,7 +93,7 @@ module.exports = (() => {
   const config = {
     info: {
       name: 'T1NstereoV2', //dont try to change the name of the plugin or it wont work
-      version: '1.0.9',
+      version: '1.0.10',
       description:
         '(You need a valid license to use this plugin) Disable echo cancellation, noise reduction, noise suppression, Diagnostic audio recording, and Debug logging all located in voice and video settings for this plugin to work, open plugin settings to see configurable settings. If you require support click on the question mark under the plugin name to join the support server.',
       authors: [
@@ -115,6 +115,7 @@ module.exports = (() => {
           'fixed auto rejoin againnnnnnnnnnnnnnnnnnn',
           'fixed auto rejoin againnnnnnnnnnnnnnfgsdfgsdfgsnnnnn',
           'fixed option for mono output audio'
+          'mono output broke as soon as i updated this plugin lmfao'
         ],
       },
     ],
@@ -1322,8 +1323,8 @@ module.exports = (() => {
                       }
                     }
                     if (decoderstereo === 2) {
-                      tin.audioDecoders[0].params = {
-                        stereo: 2,
+                      if (consolelogs) {
+                         Logger.info('Using discords default audio decoder stereo, idk how to make that sound any better')
                       }
                     }
                     if (consolelogs === true) {
