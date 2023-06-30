@@ -14,7 +14,7 @@ $$$$$$$$\   $$\   $$\   $$\        $$$$$$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$$$$$$
 
  * @name T1NstereoV2
  * @author tinguy1
- * @version 1.0.10
+ * @version 1.0.11
  * @authorLink https://github.com/tinguy1
  * @invite 9bpbS4kjdf
  * @source https://github.com/tinguy1/T1NstereoV2
@@ -93,7 +93,7 @@ module.exports = (() => {
   const config = {
     info: {
       name: 'T1NstereoV2', //dont try to change the name of the plugin or it wont work
-      version: '1.0.10',
+      version: '1.0.11',
       description:
         '(You need a valid license to use this plugin) Disable echo cancellation, noise reduction, noise suppression, Diagnostic audio recording, and Debug logging all located in voice and video settings for this plugin to work, open plugin settings to see configurable settings. If you require support click on the question mark under the plugin name to join the support server.',
       authors: [
@@ -109,6 +109,7 @@ module.exports = (() => {
       {
         title: 'V2 release and bug fixes',
         items: [
+          'added info on how to use custom voice bitrate',
           'fixed problem where auto rejoin disapears when server muted',
           'fixed auto rejoin',
           'fixed auto rejoin again ugh, sorry for the plugin update prompts',
@@ -174,8 +175,8 @@ module.exports = (() => {
             type: 'textbox',
             id: 'custombitratevalue',
             name: 'Custom voice bitrate value',
-            note: 'Use a custom bitrate value, you will need to choose "Custom value" in the dropdown menu above.',
-            placeholder: 'Type a value in kbps in this box',
+            note: 'Use a custom bitrate value, you will need to choose "Custom value" in the dropdown menu above. example: 510000 - 510 kbps',
+            placeholder: 'Type the kbps value you want to set and add 3 zeros, example: 510000 - 510 kbps',
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy
           {
