@@ -279,7 +279,7 @@ module.exports = (() => {
             id: 'nutballman4',
             name: "Video bitrate",
             note: "using other plugins that change any bitrate can interfere with this plugin so here are the video and stream bitrate fixes here",
-            value: 3000000,
+            value: 10000000,
             options: [
               {
                 label: "(Experimental) 250 kbps",
@@ -308,6 +308,10 @@ module.exports = (() => {
               {
                 label: "5000 kbps",
                 value: 5000000
+              },
+              {
+                label: "10000 kbps",
+                value: 10000000
               }
             ],
           }, //made by tinguy1 on github dont steal pussy
@@ -316,7 +320,7 @@ module.exports = (() => {
             id: 'nutballman5',
             name: "Stream bitrate",
             note: "using other plugins that change any bitrate can interfere with this plugin so here are the video and stream bitrate fixes here  ",
-            value: 3000000,
+            value: 10000000,
             options: [
               {
                 label: "(Experimental) 250 kbps",
@@ -345,6 +349,10 @@ module.exports = (() => {
               {
                 label: "5000 kbps",
                 value: 5000000
+              },
+              {
+                label: "10000 kbps",
+                value: 10000000
               }
             ],
           }, //made by tinguy1 on github dont steal pussy
@@ -1374,10 +1382,10 @@ module.exports = (() => {
                 tin.callMinBitRate = channelmaxbitrate
               } //made by tinguy1 on github dont steal pussy
               if (tin.encodingVideoMinBitRate) {
-                tin.encodingVideoMinBitRate = channelmaxbitrate
+                tin.encodingVideoMinBitRate = videobitrate
               } //made by tinguy1 on github dont steal pussy
               if (tin.encodingVideoMaxBitRate) {
-                tin.encodingVideoMaxBitRate = channelmaxbitrate
+                tin.encodingVideoMaxBitRate = videobitrate
               } //made by tinguy1 on github dont steal pussy
               // stream and camera fps/bitrate stuff
               if (tin.encodingVideoBitRate) {
@@ -1392,17 +1400,19 @@ module.exports = (() => {
               tin2.videoQualityManager.options.videoBitrate.max = videobitrate
               tin2.videoQualityManager.options.videoBitrate.min = videobitrate
               tin2.videoQualityManager.options.videoBitrateFloor = videobitrate
-              tin.encodingVideoFrameRate = camfps
+              if (streamfps === camfps) {
+                tin.encodingVideoFrameRate = camfps
+              } else {
+                if (streamfps < 60) {
+                  tin.encodingVideoFrameRate = camfps
+                } else {
+                  BdApi.showToast('If you have custom camfps + stream fps on please make them the same framerate due to an issue or else discord will crash (sorry)', { type: 'warning' })
+                }
+              }
               tin.remoteSinkWantsMaxFramerate = 999
               tin2.remoteSinkWantsMaxFramerate = 999 //just in case
               tin2.remoteVideoSinkWants.any = sinkquality
               tin2.localVideoSinkWants.any = sinkquality
-              //if (tin4.setCanHavePriority) {
-              //tin4.setCanHavePriority(true);
-              //}
-              //tin2.conn.setRemoteUserCanHavePriority(true);
-              //Logger.info(tin2.conn.setRemoteUserCanHavePriority)
-              //tin4.setForceAudioInput();
               if (tin.streamParameters) {
                 tin.streamParameters[0].quality = sinkquality
                 tin.streamParameters[0].maxBitrate = streambitrate
