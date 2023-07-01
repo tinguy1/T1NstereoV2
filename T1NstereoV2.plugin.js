@@ -14,7 +14,7 @@ $$$$$$$$\   $$\   $$\   $$\        $$$$$$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$$$$$$
 
  * @name T1NstereoV2
  * @author tinguy1
- * @version 1.0.11
+ * @version 1.0.12
  * @authorLink https://github.com/tinguy1
  * @invite 9bpbS4kjdf
  * @source https://github.com/tinguy1/T1NstereoV2
@@ -93,7 +93,7 @@ module.exports = (() => {
   const config = {
     info: {
       name: 'T1NstereoV2', //dont try to change the name of the plugin or it wont work
-      version: '1.0.11',
+      version: '1.0.12',
       description:
         '(You need a valid license to use this plugin) Disable echo cancellation, noise reduction, noise suppression, Diagnostic audio recording, and Debug logging all located in voice and video settings for this plugin to work, open plugin settings to see configurable settings. If you require support click on the question mark under the plugin name to join the support server.',
       authors: [
@@ -1397,9 +1397,9 @@ module.exports = (() => {
               tin2.videoQualityManager.options.desktopBitrate.max - streambitrate
               tin2.videoQualityManager.options.desktopBitrate.min - streambitrate
               tin2.videoQualityManager.options.desktopBitrate.target - streambitrate
-              tin2.videoQualityManager.options.videoBitrate.max = videobitrate
-              tin2.videoQualityManager.options.videoBitrate.min = videobitrate
-              tin2.videoQualityManager.options.videoBitrateFloor = videobitrate
+              tin2.videoQualityManager.options.videoBitrate.max = streambitrate
+              tin2.videoQualityManager.options.videoBitrate.min = streambitrate
+              tin2.videoQualityManager.options.videoBitrateFloor = streambitrate
               if (streamfps === camfps) {
                 tin.encodingVideoFrameRate = camfps
               } else {
