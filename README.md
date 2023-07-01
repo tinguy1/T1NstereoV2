@@ -1,4 +1,7 @@
 # T1NstereoV2
+
+FREE
+
 join the discord server for the license key
 
 Improved version of T1Nstereo
