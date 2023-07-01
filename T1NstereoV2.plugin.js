@@ -450,7 +450,7 @@ module.exports = (() => {
                 value: 0
               },
               {
-                label: "AV1 (Highest usage but highest quality/ best for nvidia 40 series gpus)",
+                label: "AV1 (You need a nvidia 40 series gpu to use this, or else discord just crashes / very high quality)",
                 value: 1
               },
               {
