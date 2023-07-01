@@ -1427,91 +1427,46 @@ module.exports = (() => {
                 if (consolelogs) {
                   Logger.info('Using discords preferred video codec');
                 }
-              } else {
-                if (savsinkqualitystatus === 1) {
-                  if (tin2.codecs != undefined && tin2.codecs[1]?.priority != undefined) {
-                    if (tin2.codecs[4]) {
-                      tin2.codecs[1].priority = parseInt(1)
-                      tin2.codecs[1].decode = true
-                      tin2.codecs[1].encode = true
-                      tin2.codecs[2].priority = parseInt(2)
-                      tin2.codecs[2].decode = false
-                      tin2.codecs[2].encode = false
-                      tin2.codecs[3].priority = parseInt(3)
-                      tin2.codecs[3].decode = false
-                      tin2.codecs[3].encode = false
-                      tin2.codecs[4].priority = parseInt(4)
-                      tin2.codecs[4].decode = false
-                      tin2.codecs[4].encode = false
-                      if (consolelogs) {
-                        Logger.info('Using AV1 for video codec')
-                      }
-                    } else {
-                      BdApi.showToast('T1NstereoV2 - You have the preferred video codec set to AV1 even though you dont have it set to AV1 in voice and video settings!!!, Please turn on AV1 or Disable this feature ', { type: 'warning' })
-                    }
-                  }
-                } else {
-                  if (savsinkqualitystatus === 2) {
-                    if (tin2.codecs != undefined && tin2.codecs[1]?.priority != undefined) {
-                      tin2.codecs[1].priority = parseInt(2)
-                      tin2.codecs[1].decode = false
-                      tin2.codecs[1].encode = false
-                      tin2.codecs[2].priority = parseInt(1)
-                      tin2.codecs[2].decode = true
-                      tin2.codecs[2].encode = true
-                      tin2.codecs[3].priority = parseInt(3)
-                      tin2.codecs[3].decode = false
-                      tin2.codecs[3].encode = false
-                      tin2.codecs[4].priority = parseInt(4)
-                      tin2.codecs[4].decode = false
-                      tin2.codecs[4].encode = false
-                      if (consolelogs) {
-                        Logger.info('Using H264 for video codec')
-                      }
+              } else if (savsinkqualitystatus >= 1 && savsinkqualitystatus <= 4) {
+                if (tin2.codecs != undefined && tin2.codecs[1]?.priority != undefined) {
+                  if (tin2.codecs[4]) {
+                    tin2.codecs[1].priority = parseInt(savsinkqualitystatus === 1 ? 1 : 4);
+                    tin2.codecs[1].decode = savsinkqualitystatus === 1 ? true : false;
+                    tin2.codecs[1].encode = savsinkqualitystatus === 1 ? true : false;
+                    tin2.codecs[2].priority = parseInt(savsinkqualitystatus === 3 ? 1 : 4);
+                    tin2.codecs[2].decode = savsinkqualitystatus === 2 ? true : false;
+                    tin2.codecs[2].encode = savsinkqualitystatus === 2 ? true : false;
+                    tin2.codecs[3].priority = parseInt(savsinkqualitystatus === 2 ? 1 : 4);
+                    tin2.codecs[3].decode = savsinkqualitystatus === 3 ? true : false;
+                    tin2.codecs[3].encode = savsinkqualitystatus === 3 ? true : false;
+                    tin2.codecs[4].priority = parseInt(savsinkqualitystatus === 4 ? 1 : 4);
+                    tin2.codecs[4].decode = savsinkqualitystatus === 4 ? true : false;
+                    tin2.codecs[4].encode = savsinkqualitystatus === 4 ? true : false;
+                    if (consolelogs) {
+                      Logger.info('Using ' + (savsinkqualitystatus === 1 ? 'AV1' : savsinkqualitystatus === 2 ? 'H264' : savsinkqualitystatus === 3 ? 'VP8' : savsinkqualitystatus === 4 ? 'VP9' : '') + ' for video/stream codec');
                     }
                   } else {
-                    if (savsinkqualitystatus === 3) {
-                      if (tin2.codecs != undefined && tin2.codecs[1]?.priority != undefined) {
-                        tin2.codecs[1].priority = parseInt(2)
-                        tin2.codecs[1].decode = true
-                        tin2.codecs[1].encode = true
-                        tin2.codecs[2].priority = parseInt(3)
-                        tin2.codecs[2].decode = false
-                        tin2.codecs[2].encode = false
-                        tin2.codecs[3].priority = parseInt(1)
-                        tin2.codecs[3].decode = true
-                        tin2.codecs[3].encode = true
-                        tin2.codecs[4].priority = parseInt(4)
-                        tin2.codecs[4].decode = false
-                        tin2.codecs[4].encode = false
-                        if (consolelogs) {
-                          Logger.info('Using VP8 for video codec')
-                        }
-                      }
-                    } else {
-                      if (savsinkqualitystatus === 4) {
-                        if (tin2.codecs != undefined && tin2.codecs[1]?.priority != undefined) {
-                          tin2.codecs[1].priority = parseInt(2)
-                          tin2.codecs[1].decode = false
-                          tin2.codecs[1].encode = false
-                          tin2.codecs[2].priority = parseInt(3)
-                          tin2.codecs[2].decode = false
-                          tin2.codecs[2].encode = false
-                          tin2.codecs[3].priority = parseInt(4)
-                          tin2.codecs[3].decode = false
-                          tin2.codecs[3].encode = false
-                          tin2.codecs[4].priority = parseInt(1)
-                          tin2.codecs[4].decode = true
-                          tin2.codecs[4].encode = true
-                          if (consolelogs) {
-                            Logger.info('Using VP9 for video codec')
-                          }
-                        }
-                      }
+                    if (consolelogs) {
+                      Logger.info('AV1 not detected');
+                    }
+                    if (savsinkqualitystatus === 1) {
+                      BdApi.showToast('T1NstereoV2 - You have the preferred video codec set to AV1 even though you dont have it set to AV1 in voice and video settings!!!, Please turn on AV1 or Disable this feature ', { type: 'warning' })
+                    }
+                    tin2.codecs[1].priority = parseInt(savsinkqualitystatus === 2 ? 1 : 4);
+                    tin2.codecs[1].decode = savsinkqualitystatus === 2 ? true : false;
+                    tin2.codecs[1].encode = savsinkqualitystatus === 2 ? true : false;
+                    tin2.codecs[2].priority = parseInt(savsinkqualitystatus === 3 ? 1 : 4);
+                    tin2.codecs[2].decode = savsinkqualitystatus === 3 ? true : false;
+                    tin2.codecs[2].encode = savsinkqualitystatus === 3 ? true : false;
+                    tin2.codecs[3].priority = parseInt(savsinkqualitystatus === 4 ? 1 : 4);
+                    tin2.codecs[3].decode = savsinkqualitystatus === 4 ? true : false;
+                    tin2.codecs[3].encode = savsinkqualitystatus === 4 ? true : false;
+                    if (consolelogs) {
+                      Logger.info('Using ' + (savsinkqualitystatus === 2 ? 'H264' : savsinkqualitystatus === 3 ? 'VP8' : savsinkqualitystatus === 4 ? 'VP9' : '') + ' for video/stream codec');
                     }
                   }
                 }
-              }
+              }             
               function waitForStats() { //DOESNT WORK ANYMORE too
                 const startTime2 = Date.now();
                 //made by tinguy1 on github dont steal pussy
