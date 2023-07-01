@@ -6,7 +6,7 @@ join the discord server for the license key
 
 Improved version of T1Nstereo
 
-This is a fork of stereosound. The youtuber lupit told me to put this or else my whole code is stolen so credits to Ryan.js, Bepvte and Lupit for claiming i stole everything in my code and also for console logging the voice module and changing one function.
+This is a fork of stereosound. The youtuber lupit told me to put this or else my whole project is stolen (self projection from him) so credits to Ryan.js, Bepvte and y'know Lupit for claiming i stole everything in my project and also for him console logging the voice module and changing one function.
 
 download the .plugin.js file then drag it into discord and ctrl r then after clicking out of the changelog menu ctrl r again to get the prompt to download zeres
 
