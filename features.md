@@ -88,6 +88,8 @@ V2 base features
 
 30. Sounds (:) enable or disable the plugins ability to play sounds (:) Like turning the plugin on and off or when a error happens.
 
+31. Advanced Settings detection and change (:) V3 automatically detects a users voice settings and configures them for the best audio quality when running the plugin for the first time.
+
 Future Features (:) Planned features include a custom soundshare source (choose where the sound comes from when streaming), custom video resolution, custom stream resolution, fixing priority speaker, more custom bitrate options, and an auto-set settings button for optimal audio quality.
 
 Please note that some features mentioned are subject to future development and may be subject to change or refinement.
