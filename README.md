@@ -4,6 +4,8 @@ FREE
 
 join the discord server for the license key
 
+/9bpbS4kjdf
+
 Improved version of T1Nstereo
 
 This is a fork of stereosound. The youtuber lupit told me to put this or else my whole project is stolen (self projection from him) so credits to Ryan.js, Bepvte and y'know Lupit for claiming i stole everything in my project and also for him console logging the voice module and changing one function.
