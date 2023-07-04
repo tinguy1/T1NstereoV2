@@ -2,6 +2,8 @@
 
 FREE
 
+See features.md to see t1nstereos features
+
 join the discord server for the license key
 
 /9bpbS4kjdf
