@@ -86,7 +86,7 @@ V2 base features
 
 39. Increased code neatness/speed/efficiency (:) increased the neatness and layout of the T1Nstereo plugin.
 
-30. Sounds (:) enable or disable the plugins ability to play sounds (:) Like turning the plugin on and off or when a error happens.
+30. Sounds (:) enable or disable the plugins ability to play sounds (:) Like turning the plugin on and off or when a error occurs.
 
 31. Advanced Settings detection and change (:) V3 automatically detects a users voice settings and configures them for the best audio quality when running the plugin for the first time.
 
