@@ -14,7 +14,7 @@ $$$$$$$$\   $$\   $$\   $$\        $$$$$$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$$$$$$
 
  * @name T1NstereoV2
  * @author tinguy1
- * @version 1.0.12
+ * @version 1.0.13
  * @authorLink https://github.com/tinguy1
  * @invite 9bpbS4kjdf
  * @source https://github.com/tinguy1/T1NstereoV2
@@ -93,7 +93,7 @@ module.exports = (() => {
   const config = {
     info: {
       name: 'T1NstereoV2', //dont try to change the name of the plugin or it wont work
-      version: '1.0.12',
+      version: '1.0.13',
       description:
         '(You need a valid license to use this plugin) Disable echo cancellation, noise reduction, noise suppression, Diagnostic audio recording, and Debug logging all located in voice and video settings for this plugin to work, open plugin settings to see configurable settings. If you require support click on the question mark under the plugin name to join the support server.',
       authors: [
@@ -109,6 +109,7 @@ module.exports = (() => {
       {
         title: 'V2 release and bug fixes',
         items: [
+          'made the audio bitrate pre set to max for retards who said it was shitty cause it sounded lower quality, yeah thats why theres settings for audio bitrate?',
           'added info on how to use custom voice bitrate',
           'fixed problem where auto rejoin disapears when server muted',
           'fixed auto rejoin',
@@ -139,7 +140,7 @@ module.exports = (() => {
             id: 'nutballman',
             name: "Audio Bitrate",
             note: "Select the voice KBPS value you want to set, or you could just let discord set the bitrate for you",
-            value: 128000,
+            value: 510000,
             options: [
               {
                 label: "Let discord set the bitrate for you",
