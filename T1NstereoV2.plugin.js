@@ -14,7 +14,7 @@ $$$$$$$$\   $$\   $$\   $$\        $$$$$$\ $$$$$$$$\ $$$$$$$$\ $$$$$$$\  $$$$$$$
 
  * @name T1NstereoV2
  * @author tinguy1
- * @version 1.0.13
+ * @version 1.1.13
  * @authorLink https://github.com/tinguy1
  * @invite 9bpbS4kjdf
  * @source https://github.com/tinguy1/T1NstereoV2
@@ -93,7 +93,7 @@ module.exports = (() => {
   const config = {
     info: {
       name: 'T1NstereoV2', //dont try to change the name of the plugin or it wont work
-      version: '1.0.13',
+      version: '1.1.13',
       description:
         '(You need a valid license to use this plugin) Disable echo cancellation, noise reduction, noise suppression, Diagnostic audio recording, and Debug logging all located in voice and video settings for this plugin to work, open plugin settings to see configurable settings. If you require support click on the question mark under the plugin name to join the support server.',
       authors: [
@@ -106,6 +106,12 @@ module.exports = (() => {
       github_raw: 'https://raw.githubusercontent.com/tinguy1/T1NstereoV2/main/T1NstereoV2.plugin.js'
     },
     changelog: [
+      {
+        title: 'V2 1.1.13 release and bug fixes',
+        items: [
+          'Fixed preset settings, setting names and descriptions for a better user experience',
+        ],
+      },
       {
         title: 'V2 release and bug fixes',
         items: [
@@ -133,13 +139,14 @@ module.exports = (() => {
             name: 'License Key',
             note: 'Enter the License key in the text box',
             placeholder: 'Enter the License key here',
+            value: '6969',
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy    
           {
             type: "dropdown",
             id: 'nutballman',
             name: "Audio Bitrate",
-            note: "Select the voice KBPS value you want to set, or you could just let discord set the bitrate for you",
+            note: "Choose Your Preferred Voice KBPS Value or Let Discord Automatically Set the Bitrate for you. This affects your audio quality and setting it to a low value will make it sound muffled.",
             value: 510000,
             options: [
               {
@@ -175,16 +182,16 @@ module.exports = (() => {
           {
             type: 'textbox',
             id: 'custombitratevalue',
-            name: 'Custom voice bitrate value',
-            note: 'Use a custom bitrate value, you will need to choose "Custom value" in the dropdown menu above. example: 510000 - 510 kbps',
+            name: 'Custom Audio Bitrate',
+            note: 'Use a custom voice bitrate value, you will need to choose "Custom value" in the dropdown menu above.',
             placeholder: 'Type the kbps value you want to set and add 3 zeros, example: 510000 - 510 kbps',
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy
           {
             type: "dropdown",
             id: 'nutballman2',
-            name: "Sample Rate(Half broken)",
-            note: "Change the sample rate for your inputs and outputs Setting a freq higher than 48 khz needs another person to have this plugin and have it set to that value too but it doesnt work anymore anyway. Going below 48000 hz is hearable but just makes your mic sound worse",
+            name: "Sample Rate (Semi working)",
+            note: "Adjust Input and Output Sample Rate: Note that setting a frequency higher than 48 kHz requires matching settings on another user's plugin, which is no longer functional. Decreasing the sample rate below 48000 Hz may result in noticeable degradation of microphone audio quality.",
             value: 48000,
             disabled: true,
             options: [
@@ -221,8 +228,8 @@ module.exports = (() => {
           {
             type: "dropdown",
             id: "nutballman3",
-            name: "Channel Max Available Bitrate ",
-            note: 'Not the actual bitrate of things in the voice channel but the value of available bitrate',
+            name: "Custom Available Bitrate Value",
+            note: 'Note that this setting pertains to the available bitrate value and is unlikely to have a significant impact.',
             value: 7808000,
             options: [
               {
@@ -239,7 +246,7 @@ module.exports = (() => {
             type: "dropdown",
             id: 'nutballman6',
             name: "Audio Encoder Packet Size",
-            note: "Set the packet size, personally I dont think this does anything but in therory putting it on a lower value would reduce latency but would most (maybe) likely result in glitchy audio (use at ya own risk)",
+            note: "While changing the packet size theoretically reduces latency, it may introduce audio glitches. Please use caution and be aware of the potential trade-off between latency and audio quality.",
             value: 960,
             options: [
               {
@@ -263,8 +270,8 @@ module.exports = (() => {
           {
             type: 'switch',
             id: 'consolelog',
-            name: 'Console logging',
-            note: 'This is for debugging and more information only as it !!SPAMS!! the console !!ALOT!! which will get sent to discord if you have Debug Logging on and will give you a higher change of getting banned',
+            name: 'Console Logging',
+            note: 'This is for debugging and more information only as it !!SPAMS!! the console !!ALOT!!',
             value: false,
             disabled: true,
           }, //made by tinguy1 on github dont steal pussy 
@@ -278,8 +285,8 @@ module.exports = (() => {
           {
             type: "dropdown",
             id: 'nutballman4',
-            name: "Video bitrate",
-            note: "using other plugins that change any bitrate can interfere with this plugin so here are the video and stream bitrate fixes here",
+            name: "Video Bitrate",
+            note: "Adjust the bitrate of your video stream",
             value: 10000000,
             options: [
               {
@@ -319,8 +326,8 @@ module.exports = (() => {
           {
             type: "dropdown",
             id: 'nutballman5',
-            name: "Stream bitrate",
-            note: "using other plugins that change any bitrate can interfere with this plugin so here are the video and stream bitrate fixes here  ",
+            name: "Stream Bitrate",
+            note: "Adjust the bitrate of your stream",
             value: 10000000,
             options: [
               {
@@ -361,7 +368,7 @@ module.exports = (() => {
             type: "dropdown",
             id: 'nutballman7',
             name: "Camera FPS",
-            note: "I decided to add in a extra feature I found that really no other plugins have (i am contemplating how this is still called a stereo plugin), if you have your FPS set high you should also set the cam bitrate higher in the settings above.",
+            note: "Adjust the fps of your camera. Please note that if you set the stream's frames per second (FPS) to a value higher than 60 or the Camera fps LOWER than 60 without changing them to the same value, it will cause Discord to crash.",
             value: 60,
             options: [
               {
@@ -401,8 +408,8 @@ module.exports = (() => {
           {
             type: "dropdown",
             id: 'nutballman8',
-            name: "(Experimental/ Buggy) Stream FPS",
-            note: "Change the max fps of a stream from 60 FPS. This feature is quite buggy and i need to fix it, if your discord crashes when using it change the value back to 60 and report the error to the T1Nstereo server.",
+            name: "(Experimental / Buggy) Stream FPS",
+            note: "Set the FPS of your stream. Please note that if you set the stream's FPS to a value higher than 60 without also setting the camera's FPS to the same value, it will cause Discord to crash.",
             value: 60,
             options: [
               {
@@ -443,7 +450,7 @@ module.exports = (() => {
             type: "dropdown",
             id: 'nutballman9',
             name: "Preferred Video/Stream Codec",
-            note: "Changes the preferred video/stream codec, to use AV1 you need to have hardware acceleration on and then need to switch it on in voice and video settings or else its just not used.",
+            note: "Changes the prefered Video/Stream Encoder/Decoder. Please note that AV1 codec support is only available if you have an NVIDIA 40 series GPU. Without the compatible GPU, AV1 codec will not be utilized, a random codec will be chosen.",
             value: 0,
             options: [
               {
@@ -471,8 +478,8 @@ module.exports = (() => {
           {
             type: "dropdown",
             id: 'nutballman10',
-            name: "Video and stream sink quality",
-            note: "Changes the video and stream sink quality/ not audio sink quality.",
+            name: "Video and Stream Sink Quality",
+            note: "Adjusting the Video/Stream sink quality settings could potentially enhance your Video/Stream quality. However, it's important to note that this feature might not have undergone extensive testing yet.",
             value: 100,
             options: [
               {
@@ -506,68 +513,68 @@ module.exports = (() => {
         settings: [
           {
             type: 'switch',
-            id: 'reconnectvc',
-            name: 'Press done button to reconnect to Current Voice channel',
-            note: 'Reconnects to the current vc when you press done, as a feature if you dont change any plugin settings and press done nothing happens, IF YOU ARE IN A VC YOU CANNOT REJOIN YOU WILL BE PERMA DISCONNECTED. join the disco server and add feedback',
-            value: false,
-            //disabled: true,
-          }, //made by tinguy1 on github dont steal pussy 
-          {
-            type: 'switch',
-            id: 'krispvad',
-            name: 'Disable Voice Activity Detection using Krisp',
-            note: 'POSSIBLE DOESNT WORK OR EVEN DO ANYTHING/ Separate audio stream is used to determine the noise gate on discord turning on or off, this could be technically make it more accurate but probably not ',
-            value: false,
-          }, //made by tinguy1 on github dont steal pussy 
-          {
-            type: 'switch',
             id: 'stereomono',
             name: 'Stereo input',
-            note: 'Make it so discord makes your input audio stereo, turning this off keeps all the other features of this plugin but makes your input only 1 channel',
+            note: 'Enabling this feature in Discord will convert your input audio to stereo, providing a multi-channel audio experience. Disabling this option retains all other plugin features but limits your input to a single audio channel.',
             value: true
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'switch',
             id: 'stereodecoder',
             name: 'Stereo Output',
-            note: ' Makes it so your discord voice channel output is stereo or mono (default discord value is on)',
+            note: 'This setting allows you to customize the output of your Discord voice channel to either stereo or mono. By default, Discord has this setting enabled for stereo output.',
             value: true,
             //disabled: true,
-          }, //made by tinguy1 on github dont steal pussy       
+          }, //made by tinguy1 on github dont steal pussy      
           {
             type: 'switch',
-            id: 'poopmode',
-            name: 'Poop Mode',
-            note: 'Makes it so your mic sounds like shit to others lowers bitrate to 5000 kbps and freq to 1 khz :skull:',
-            value: false
-          }, //made by tinguy1 on github dont steal pussy
+            id: 'reconnectvc',
+            name: 'Reconnect & Apply',
+            note: 'When you press the "Done" button in the plugin settings, it reconnects you to the current Voice channel and applies the settings. Please note that if you are already in a Voice channel and you press "Done" without making any changes to the plugin settings, nothing will happen. However, if you attempt to reconnect while in a Voice channel, you will be permanently disconnected. For further assistance or to provide feedback, please join the Discord server.',
+            value: false,
+            //disabled: true,
+          }, //made by tinguy1 on github dont steal pussy 
           {
             type: 'switch',
-            id: 'disablestarttoasts',
-            name: 'Disable the Toasts and banner that appears on plugin start up',
-            note: 'Disables the informative start up toasts explaining how to use the plugin and banner thanking the user for purchasing the plugin',
-            value: false
-          }, //made by tinguy1 on github dont steal pussy
+            id: 'krispvad',
+            name: 'Krisp-Enabled Voice Activity Detection (VAD) Disable',
+            note: 'Noise Gate Adjustment: Potential for Enhanced Accuracy as it removes the KRISP noise cancellation, though Individual Results May Vary.',
+            value: false,
+          }, //made by tinguy1 on github dont steal pussy  
           {
             type: 'switch',
             id: 'startndstop',
-            name: 'Sounds',
-            note: 'Enables the plugin to have sounds like start and stop sounds etc',
+            name: 'Plugin Sounds',
+            note: 'Enables the plugin to have sounds, for example the sound that plays when turning the plugin on/off',
             value: true
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'switch',
+            id: 'disablestarttoasts',
+            name: 'Startup Toasts and Banner Disable',
+            note: 'Disables the informative start up toasts explaining how to use the plugin + the purchase banner',
+            value: false
+          }, //made by tinguy1 on github dont steal pussy
+          {
+            type: 'switch',
             id: 'settingsavefreq',
-            name: 'Save plugin settings more freqently (Recommended)',
-            note: 'Saves the plugin settings more frequenly rather than only saving them and applying them when joining a voice channel. If you have this on with Debug Logging on for this plugin, IT WILL spam the console more. This is mainly for debugging purposes as why it the final release turning this off is most likely disabled',
+            name: 'Enhanced Plugin Settings Auto-Save',
+            note: 'More Frequent Saving, But be Aware of Increased Debug Logging Output when Enabled (For Debugging Purposes)',
             value: true,
-            //disabled: true,
+            disabled: true,
+          }, //made by tinguy1 on github dont steal pussy
+          {
+            type: 'switch',
+            id: 'poopmode',
+            name: 'Poop Mode',
+            note: 'Makes it so your mic sounds like shit.',
+            value: false
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'switch',
             id: 'setvolumemax',
-            name: 'Set input volume to max when join VC',
-            note: 'Automatically sets the input volume to max when joining a voice channel, just in case you forget',
+            name: 'Auto-Set Max Input Volume on Voice Channel Join',
+            note: 'Ensures Maximum Volume by Default for Convenience',
             value: false,
           }, //made by tinguy1 on github dont steal pussy
         ]
@@ -580,40 +587,40 @@ module.exports = (() => {
           {
             type: 'switch',
             id: 'voiceattenuation',
-            name: 'Voice attenuation bypass (maybe)',
-            note: 'POSSIBLY sets attenuation to false (if you have attenuation on and you like it don turn this on) possibly makes it so people with attenuation on your voice level might not change to them)/might not work',
+            name: 'Disable Attenuation to Others (Experimental)',
+            note: 'Disabling attenuation in this way may affect voice level changes for users who have attenuation enabled. Please note that this feature is experimental and its effectiveness may vary.',
             value: false,
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'switch',
             id: 'pttbypass',
-            name: 'Bypass PTT VCs',
-            note: 'If you have this on you can still use voice activity in Push To Talk only VCs',
+            name: 'Voice Activity with Push-to-Talk-Only VCs',
+            note: 'With this feature enabled, you can use voice activity while in Push-to-Talk-only voice channels',
             value: false,
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'switch',
             id: 'seechannelsettings',
-            name: '(Kinda useless) See Channel Settings',
-            note: 'Lets you see channel settings no matter what permissions you have, you cant change anything though :(',
+            name: 'View-Only Channel Settings',
+            note: 'Allows you to access and view channel settings regardless of your permissions, although modifying settings is not possible',
             value: false,
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'switch',
             id: 'prioritygetaround',
-            name: 'Priority Speakers have no affect on your volume to others',
-            note: 'Make it so when someone uses Priority Speaker your volume to others doesnt get lowered/ might work/not work',
+            name: 'Maintain Volume Levels during Priority Speaker',
+            note: 'Enabling this feature aims to prevent your volume from being lowered when a Priority Speaker is Speaking. Please note that its effectiveness may vary.',
             value: false,
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'switch',
             id: 'priorityaudio',
-            name: 'Force Audio Priority in Voice Channels',
-            note: 'Gives you priority speaker no matter on what perms you have/ might work/ not work',
+            name: 'Priority Speaker Override',
+            note: 'This feature grants you priority speaker status regardless of your permissions. Please note that its effectiveness may vary.',
             value: false,
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy
@@ -621,31 +628,31 @@ module.exports = (() => {
             type: 'switch',
             id: 'spoofadperms',
             name: '(Useless) Spoof admin permissions',
-            note: 'Will spoof the client into believing you are a admininstrator of the server your in, you cant change anything but you can see role permissions in channel settings with the channel bypass etc, also most of this should be for show and doesnt give you any actual permissions you can do stuff with, I tried',
+            note: 'Spoofing admin permissions is not recommended. However, please note that it is purely cosmetic and does not grant you any actual administrative permissions or abilities, lol.',
             value: false,
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'switch',
             id: 'autorejoin',
-            name: 'Auto rejoin when kicked from VC/ VC lock',
-            note: 'To now use this feature you can use a button to turn it on via the user panel',
+            name: '(Old toggle) Auto-Rejoin',
+            note: 'You can now enable or disable this feature using the setting below to add a dedicated button on the user panel. The feature will reflect its current state whether you activate it through the button or by other means.',
             value: false,
             disabled: true,
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'switch',
             id: 'autorejoinbutton',
-            name: 'Auto rejoin toggle button',
-            note: 'Adds a button to the unmute/mute buttons to quickly toggle auto rejoin on and off',
+            name: 'Auto-Rejoin Button',
+            note: 'This feature automatically initiates rejoining the voice channel if you are kicked or moved within the server. To facilitate easy toggling of the auto rejoin functionality, a dedicated button is added next to the mute/unmute buttons.',
             value: false,
             //disabled: true,
           }, //made by tinguy1 on github dont steal pussy
           {
             type: 'slider',
             id: 'autorejoindelay',
-            name: 'Auto rejoin delay',
-            note: 'Sets the delay in seconds before automatically rejoining a voice channel with Auto Rejoin on, set this value higher if getting rate limited. In milliseconds (1000 = 1 second)',
+            name: 'Auto-Rejoin Delay',
+            note: 'Specifies the delay in seconds before automatically rejoining a voice channel with the Auto Rejoin feature enabled. Increase this value if you are experiencing rate limiting. Please note that the delay should be specified in milliseconds (e.g., 1000 = 1 second).',
             value: 200,
             defaultValue: 200,
             min: 0,
@@ -663,15 +670,15 @@ module.exports = (() => {
           {
             type: 'switch',
             id: 'enableToasts',
-            name: 'Enable Toasts',
-            note: 'Allows the plugin to let you know it is working, and also warn you about voice settings, dont turn this off for the first week of using the plugin as it has helpfull reminders to help you have the best experience',
+            name: 'Toasts',
+            note: 'Allows the plugin to let you know it is working, and also warn you about voice settings, dont turn this off for the first week of using the plugin as it has helpful reminders to help you have the best experience.',
             value: true
           }, //made by tinguy1 on github dont steal pussy
           {
             type: "dropdown",
             id: 'toastpositio',
             name: "(Not implemented/ Doesnt work yet) Toast Position",
-            note: "Choose T1NstereoV2S toast position",
+            note: "Choose the Toast position",
             value: 100,
             options: [
               {
@@ -703,8 +710,8 @@ module.exports = (() => {
           {
             type: 'textbox',
             id: 'vcjointoast',
-            name: 'Voice channel join Toast',
-            note: 'change the toast that shows when joining a voice channel',
+            name: 'Voice Channel join Toast',
+            note: 'Change the toast that shows when joining a voice channel.',
             value: 'I love tinguy1 on github he is my daddy and i love him so much + T1NstereoV2 is the best plugin ever made',
             placeholder: 'I love tinguy1 on github he is my daddy and i love him so much + T1NstereoV2 is the best plugin ever made',
             //disabled: true,
